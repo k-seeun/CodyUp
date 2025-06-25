@@ -1,0 +1,29 @@
+th{
+    padding: 40px;
+    font-size: 20px;
+}
+td{
+    padding: 3px;
+    border: 0.1px solid #ececec;
+}
+table{
+    padding-left: 30%;
+    padding-bottom: 3%;
+    border : none;
+}
+table td:nth-child(1){
+    width: 30px;
+}
+
+.edit{
+    color: blue;
+    border: none;
+    background-color: white;
+    font-size: 17px;
+}
+.delete{
+    color: red;
+    border: none;
+    background-color: white;
+    font-size: 17px;
+}

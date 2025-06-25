@@ -1,0 +1,49 @@
+.Box-order{
+    width: 90%;
+    height: 220px;
+    border: 1px solid #cfcfcf;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    margin-left: 5%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.table-order{
+    width: 89%;
+    margin-left: 10%;
+    margin-top: -14%;
+}
+.table-order th{
+    width: 28%;
+    text-align: center;
+    padding: 10px;
+    background-color: #ececec;
+}
+.table-order td{
+    text-align: center;
+}
+.info-order{
+    margin-top: 20px;
+    margin-left: 50px;
+    font-size: 20px;
+}
+/*주문취소 버튼*/
+.info-order button{
+    position: relative;
+    bottom: 50px;
+    left: 235%;
+    border: none;
+    background-color: white;
+    font-size: 17px;
+}
+.status-cancel{
+    color: red;
+}
+.pagebtn{
+    gap: 30px;
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+}
