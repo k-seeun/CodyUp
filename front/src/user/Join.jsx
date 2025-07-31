@@ -39,7 +39,7 @@ const Join = () => {
       return;
     }
 
-    const res = await fetch("http://192.168.0.20:8080/check/id", {
+    const res = await fetch("http://127.0.0.1:8080/check/id", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ user_id: id })
@@ -63,7 +63,7 @@ const Join = () => {
       return;
     }
 
-    const res = await fetch("http://192.168.0.20:8080/check/phone", {
+    const res = await fetch("http://127.0.0.1:8080/check/phone", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ user_phone_number: phone })
@@ -97,7 +97,7 @@ const Join = () => {
       return;
     }
 
-    const res = await fetch("http://192.168.0.20:8080/join", {
+    const res = await fetch("http://127.0.0.1:8080/join", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

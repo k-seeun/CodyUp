@@ -8,7 +8,7 @@ const User_List = () => {
   const [editData, setEditData] = useState({}); //수정한 데이터만 따로 저장
 
   useEffect(()=>{
-    fetch('http://192.168.0.20:8080/admin/users')
+    fetch('http://127.0.0.1:8080/admin/users')
     .then((res)=>{
       if (!res.ok) {
       return res.text().then(text => {
@@ -41,7 +41,7 @@ const User_List = () => {
   const saveEdit = async () => {
     try{
       //백엔드 수정 API 호출
-      const res = await fetch(`http://192.168.0.20:8080/admin/users/${editData.user_id}`,{
+      const res = await fetch(`http://127.0.0.1:8080/admin/users/${editData.user_id}`,{
          method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -66,7 +66,7 @@ const User_List = () => {
     if(!window.confirm("정말 삭제하시겠습니까?")) return;
 
     try{
-      const res =await fetch(`http://192.168.0.20:8080/admin/users/${user_id}`,{
+      const res =await fetch(`http://127.0.0.1:8080/admin/users/${user_id}`,{
         method: 'DELETE',
       });
       if (!res.ok) {

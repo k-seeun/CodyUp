@@ -10,7 +10,7 @@ const Orders_List = () => {
   const currentItems = orders.slice(indexOfFirstItem, indexOfLastItem); //페이지에 보여줄 항목들만 잘라냄
 
   useEffect(() => {
-    fetch('http://192.168.0.20:8080/admin/orders')
+    fetch('http://127.0.0.1:8080/admin/orders')
       .then((res) => res.json())
       .then ((data) => {
         const sortedData = data.sort( //최신날짜 기준 정렬
@@ -24,7 +24,7 @@ const Orders_List = () => {
   },[]);
 
   const handleCancle = (orderId) => {
-    fetch(`http://192.168.0.20:8080/admin/${orderId}/cancel`,{
+    fetch(`http://127.0.0.1:8080/admin/${orderId}/cancel`,{
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',

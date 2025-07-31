@@ -19,6 +19,7 @@
   margin: 0;
   font-size: 2.5vw;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .main_title_right {

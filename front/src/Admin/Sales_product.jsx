@@ -18,7 +18,7 @@ const Sales_product = () => {
   const handleSearch = () => {
     if(!name) return;
 
-    fetch(`http://192.168.0.20:8080/admin/sales/product?name=${name}`)
+    fetch(`http://127.0.0.1:8080/admin/sales/product?name=${name}`)
     .then((res) => res.json())
     .then((data) => {
 

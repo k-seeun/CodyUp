@@ -10,7 +10,7 @@ function CartPage({ userId }) {
   useEffect(() => {
     if (!userId) return;
 
-    axios.get(`http://192.168.0.20:8080/mypage/cart/${userId}`)
+    axios.get(`http://127.0.0.1:8080/mypage/cart/${userId}`)
       .then(res => {
         if (res.data.success) {
           setCartItems(res.data.cart);
@@ -26,7 +26,7 @@ function CartPage({ userId }) {
   }, [userId]);
 
   const handleQuantityChange = (cartId, newQty) => {
-    axios.patch(`http://192.168.0.20:8080/mypage/cart/${cartId}`, {
+    axios.patch(`http://127.0.0.1:8080/mypage/cart/${cartId}`, {
       quantity: newQty
     }).then(() => {
       setCartItems(prev =>
@@ -45,7 +45,7 @@ function CartPage({ userId }) {
   };
 
   const handleDelete = (cartId) => {
-    axios.delete(`http://192.168.0.20:8080/mypage/cart/${cartId}`)
+    axios.delete(`http://127.0.0.1:8080/mypage/cart/${cartId}`)
       .then(() => {
         setCartItems(prev => prev.filter(item => item.cart_id !== cartId));
       })
@@ -80,14 +80,14 @@ function CartPage({ userId }) {
       });
 
     try {
-      const res = await axios.post('http://192.168.0.20:8080/mypage/cart/order', {
+      const res = await axios.post('http://127.0.0.1:8080/mypage/cart/order', {
         user_id: userId,
         order_items: selectedCartData
       });
 
       if (res.data.success) {
         alert('주문이 완료되었습니다.');
-        const refreshed = await axios.get(`http://192.168.0.20:8080/mypage/cart/${userId}`);
+        const refreshed = await axios.get(`http://127.0.0.1:8080/mypage/cart/${userId}`);
         if (refreshed.data.success) {
           setCartItems(refreshed.data.cart);
           setSelectedItems([]);
@@ -132,7 +132,7 @@ function CartPage({ userId }) {
                   onChange={() => handleCheckboxChange(item.cart_id)}
                 />
                 <img
-                  src={`http://192.168.0.20:8080/${item.item_img}`}
+                  src={`http://127.0.0.1:8080/${item.item_img}`}
                   alt={item.item_name}
                   className="cart-item-image"
                 />

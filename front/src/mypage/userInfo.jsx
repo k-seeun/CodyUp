@@ -28,7 +28,7 @@ function UserInfo({ myuserId }) {
   useEffect(() => {
     if (!myuserId) return;
 
-    axios.post('http://192.168.0.20:8080/mypage/userinfo', { user_id: myuserId })
+    axios.post('http://127.0.0.1:8080/mypage/userinfo', { user_id: myuserId })
       .then((res) => {
         if (res.data.success) {
           setUser(res.data.user);

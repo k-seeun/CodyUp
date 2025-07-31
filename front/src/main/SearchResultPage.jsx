@@ -18,7 +18,7 @@ function SearchResultPage() {
     }
 
    axios
-      .get(`http://192.168.0.20:8080/item/search?keyword=${encodeURIComponent(keyword)}`)
+      .get(`http://127.0.0.1:8080/item/search?keyword=${encodeURIComponent(keyword)}`)
       .then((res) => {
         //console.log('검색 결과 응답:', res.data);
         if (Array.isArray(res.data)) {
@@ -48,7 +48,7 @@ function SearchResultPage() {
             {results.map((item) => (
                 <li key={item.item_origin_id} className="search-result-item">
                     <a href={`/item/${item.item_origin_id}`}>
-                        <img src={`http://192.168.0.20:8080/${item.item_img}`} alt={item.item_name} />
+                        <img src={`http://127.0.0.1:8080/${item.item_img}`} alt={item.item_name} />
                     </a>
                     <div>{item.item_name}</div>
                     <div>

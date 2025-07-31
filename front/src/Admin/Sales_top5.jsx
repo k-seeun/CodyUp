@@ -18,7 +18,7 @@ const Sales_top5 = () => {
     const[data, setData] = useState([]);
   
     useEffect(() => {
-     fetch(`http://192.168.0.20:8080/admin/sales/rank`)
+     fetch(`http://127.0.0.1:8080/admin/sales/rank`)
     .then((res) => res.json())
       .then((data) => {
       if (Array.isArray(data)) {

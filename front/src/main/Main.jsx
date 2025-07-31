@@ -38,12 +38,12 @@ function Main() {
   }, [isReady]);
 
   useEffect(() => {
-    fetch('http://192.168.0.20:8080/item')
+    fetch('http://127.0.0.1:8080/item')
       .then(res => res.json())
       .then(data => setProducts(data))
       .catch(err => console.error('상품 목록 불러오기 실패:', err));
 
-      axios.get('http://192.168.0.20:8080/admin/discount')
+      axios.get('http://127.0.0.1:8080/admin/discount')
       .then(res => setDiscountProducts(res.data))
       .catch(err => console.error('할인 상품 불러오기 실패:', err));
   }, []);
@@ -238,7 +238,7 @@ function Main() {
               <div key={item.item_origin_id} className="main_img_div_slider">
                 <img
                   className="main_div_1_img"
-                  src={`http://192.168.0.20:8080/${item.item_img}`}
+                  src={`http://127.0.0.1:8080/${item.item_img}`}
                   alt={item.item_name}
                   style={{ opacity: isCenter ? 1 : 0.5, cursor: isCenter ? 'pointer' : 'default' }}
                   onClick={() => isCenter && goToProductPage(item.item_origin_id)}
@@ -341,7 +341,7 @@ function Main() {
         <div className="recommend_grid">
           {recommended.map(item => (
             <div key={item.item_origin_id} className="recommend_card" onClick={() => goToProductPage(item.item_origin_id)}>
-              <img src={`http://192.168.0.20:8080/${item.item_img}`} alt={item.item_name} />
+              <img src={`http://127.0.0.1:8080/${item.item_img}`} alt={item.item_name} />
               <p>{item.item_name}</p>
               <p>{item.item_price.toLocaleString()}원</p>
             </div>
@@ -356,7 +356,7 @@ function Main() {
           <div className="main_img_div_static" key={item.item_origin_id}>
             <img
               className="main_div_1_img"
-              src={`http://192.168.0.20:8080/${item.item_img}`}
+              src={`http://127.0.0.1:8080/${item.item_img}`}
               onClick={() => goToProductPage(item.item_origin_id)}
               alt={item.item_name}
             />

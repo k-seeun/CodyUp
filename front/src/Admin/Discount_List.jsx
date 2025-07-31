@@ -10,7 +10,7 @@ function Discount_List() {
 
     const fetchAllItems = async () => {
     try {
-        const res = await axios.get('http://192.168.0.20:8080/admin/all-items');
+        const res = await axios.get('http://127.0.0.1:8080/admin/all-items');
         setItems(res.data); // setItems는 select 박스용
     } catch (err) {
         console.error('전체 상품 목록 불러오기 오류:', err);
@@ -21,7 +21,7 @@ function Discount_List() {
   // 할인 상품 목록 조회
   const fetchDiscountedItems = async () => {
     try {
-        const res = await axios.get('http://192.168.0.20:8080/admin/discount');
+        const res = await axios.get('http://127.0.0.1:8080/admin/discount');
         setDiscountItems(res.data); // 할인 리스트 출력용
   } catch (err) {
     console.error('할인 상품 불러오기 오류:', err);
@@ -36,7 +36,7 @@ function Discount_List() {
     }
 
     try {
-      await axios.patch('http://192.168.0.20:8080/admin/discount/apply', {
+      await axios.patch('http://127.0.0.1:8080/admin/discount/apply', {
         item_origin_id: selectedItemId,
         discount_rate: Number(discountRate)
       });
@@ -54,7 +54,7 @@ function Discount_List() {
   // 할인 초기화
   const handleReset = async () => {
     try {
-      await axios.patch('http://192.168.0.20:8080/admin/reset');
+      await axios.patch('http://127.0.0.1:8080/admin/reset');
       alert('모든 상품의 할인 정보가 초기화되었습니다.');
       fetchDiscountedItems();
     } catch (err) {
@@ -111,7 +111,7 @@ function Discount_List() {
                 discountItems.map(item => (
                 <tr className='discountPage_list' key={item.item_origin_id}>
                     <td className='discountPage_img'>
-                    <img src={`http://192.168.0.20:8080/${item.item_img}`} alt={item.item_name} />
+                    <img src={`http://127.0.0.1:8080/${item.item_img}`} alt={item.item_name} />
                     </td>
                     <td>{item.item_name}</td>
                     <td>{item.item_price}원</td>

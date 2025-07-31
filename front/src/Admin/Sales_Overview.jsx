@@ -24,7 +24,7 @@ const Sales_Overview = () => {
 
     //console.log("조회 요청 날짜:", date); 
 
-    fetch(`http://192.168.0.20:8080/admin/sales?date=${date}`)
+    fetch(`http://127.0.0.1:8080/admin/sales?date=${date}`)
     .then((res)=>res.json())
     .then((data)=> {
       if(data.order_option && typeof data.total_price === 'number' && data.order_date) {

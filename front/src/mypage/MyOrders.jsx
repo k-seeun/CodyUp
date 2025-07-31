@@ -40,7 +40,7 @@ function MyOrders({ userId }) {
     };
 
     useEffect(() => {
-        axios.get(`http://192.168.0.20:8080/mypage/orders/${userId}`)
+        axios.get(`http://127.0.0.1:8080/mypage/orders/${userId}`)
         .then(res => {
             if (res.data.success) {
             setOrders(res.data.orders);

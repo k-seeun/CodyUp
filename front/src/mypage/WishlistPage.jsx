@@ -7,7 +7,7 @@ function WishlistPage({ userId }) {
   const [sortOption, setSortOption] = useState('recent'); // 'recent' | 'price'
 
   useEffect(() => {
-    axios.get(`http://192.168.0.20:8080/mypage/wishlist/${userId}`)
+    axios.get(`http://127.0.0.1:8080/mypage/wishlist/${userId}`)
       .then(res => {
         if (res.data.success) {
           setWishlist(res.data.wishlist);
@@ -20,7 +20,7 @@ function WishlistPage({ userId }) {
   const handleDelete = (item_origin_id) => {
     if (!window.confirm('이 상품을 찜목록에서 삭제하시겠습니까?')) return;
 
-    axios.delete('http://192.168.0.20:8080/mypage/wishlist', {
+    axios.delete('http://127.0.0.1:8080/mypage/wishlist', {
       data: { user_id: userId, item_origin_id }
     })
       .then(res => {
@@ -66,7 +66,7 @@ function WishlistPage({ userId }) {
             <div className="wishlist-card" key={item.item_origin_id}>
               <img
                 className="wishlist-img"
-                src={`http://192.168.0.20:8080/${item.item_img}`}
+                src={`http://127.0.0.1:8080/${item.item_img}`}
                 alt={item.item_name}
                 onClick={() => goToProductPage(item.item_origin_id)}
               />

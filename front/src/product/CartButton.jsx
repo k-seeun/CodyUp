@@ -23,7 +23,7 @@ function CartButton({ item, selectedColor, selectedSize, selectedAmount, disable
       quantity: selectedAmount
     });
 
-    axios.post('http://192.168.0.20:8080/mypage/cart/add', {
+    axios.post('http://127.0.0.1:8080/mypage/cart/add', {
       user_id: userId,
       item_origin_id: item.item_origin_id,
        cart_option: {

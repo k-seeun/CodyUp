@@ -40,7 +40,7 @@ function SubCategoryPage() {
       a = Number(subId); b = Number(subId);
     }
 
-    fetch('http://192.168.0.20:8080/item')
+    fetch('http://127.0.0.1:8080/item')
       .then(res => res.json())
       .then(data => {
         const filtered = data.filter(item => item.category_id >= a && item.category_id <= b);
@@ -223,7 +223,7 @@ function SubCategoryPage() {
             <div key={product.item_origin_id} className="product-card">
               <img
                 onClick={() => goToProductPage(product.item_origin_id)}
-                src={`http://192.168.0.20:8080/${product.item_img}`}
+                src={`http://127.0.0.1:8080/${product.item_img}`}
                 alt={product.item_name}
               />
               <p className='prouduct-infos'>{product.item_name}</p>

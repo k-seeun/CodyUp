@@ -18,7 +18,7 @@ function UpdatePassword({ userId }) {
       return;
     }
 
-    axios.patch('http://192.168.0.20:8080/mypage/update-password', {
+    axios.patch('http://127.0.0.1:8080/mypage/update-password', {
       user_id: userId,
       current_password: currentPw,
       new_password: newPw

@@ -9,7 +9,7 @@ function WishButton({ itemId }) {
    useEffect(() => {
     if (!userId) return;
 
-    axios.get(`http://192.168.0.20:8080/mypage/wishlist/${userId}`)
+    axios.get(`http://127.0.0.1:8080/mypage/wishlist/${userId}`)
       .then(res => {
         if (res.data.success) {
           const found = res.data.wishlist.find(item => item.item_origin_id === parseInt(itemId));
@@ -26,7 +26,7 @@ function WishButton({ itemId }) {
 
     if (!isWished) {
       // 찜 등록
-      axios.post('http://192.168.0.20:8080/mypage/wishlist', {
+      axios.post('http://127.0.0.1:8080/mypage/wishlist', {
         user_id: userId,
         item_origin_id: itemId
       })
@@ -44,7 +44,7 @@ function WishButton({ itemId }) {
       });
     } else {
       // 찜 해제
-      axios.delete('http://192.168.0.20:8080/mypage/wishlist', {
+      axios.delete('http://127.0.0.1:8080/mypage/wishlist', {
         data: { user_id: userId, item_origin_id: itemId }
       })
       .then(res => {

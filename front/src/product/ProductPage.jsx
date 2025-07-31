@@ -29,7 +29,7 @@ function ProductPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://192.168.0.20:8080/item/${productId}`)
+    fetch(`http://127.0.0.1:8080/item/${productId}`)
       .then(res => res.json())
       .then(data => setProduct(data))
       .catch(err => console.error('상세 상품 불러오기 실패:', err));
@@ -39,7 +39,7 @@ function ProductPage() {
 
   useEffect(() => {
     if (!product) return;
-    fetch('http://192.168.0.20:8080/item')
+    fetch('http://127.0.0.1:8080/item')
       .then(res => res.json())
       .then(data => {
         const others = data.filter(item => item.item_origin_id !== product.item_origin_id);
@@ -59,7 +59,7 @@ function ProductPage() {
 
   
   const fetchReviews = () => {
-    axios.get(`http://192.168.0.20:8080/item/review/${productId}`)
+    axios.get(`http://127.0.0.1:8080/item/review/${productId}`)
       .then(res => {
         setReviews(Array.isArray(res.data.reviews) ? res.data.reviews : []);
         setCurrentPage(1);
@@ -102,12 +102,12 @@ function ProductPage() {
     ]
   };
 
-  axios.post("http://192.168.0.20:8080/mypage/cart/order", orderData)
+  axios.post("http://127.0.0.1:8080/mypage/cart/order", orderData)
     .then(res => {
       if (res.data.success) {
         alert("주문이 완료되었습니다.");
         setOrderMessage('');
-        fetch(`http://192.168.0.20:8080/item/${productId}`)
+        fetch(`http://127.0.0.1:8080/item/${productId}`)
         .then(res => res.json())
         .then(data => {
           setProduct(data);   // 이걸로 product가 바뀌면 위의 useMemo가 자동 반영
@@ -133,7 +133,7 @@ function ProductPage() {
 
   const handleSubmitReview = () => {
     if (!reviewText.trim() || reviewRating === 0) return;
-    axios.post('http://192.168.0.20:8080/item/review', {
+    axios.post('http://127.0.0.1:8080/item/review', {
       user_id: currentUserId,
       item_id: productId,
       review_content: reviewText,
@@ -158,7 +158,7 @@ function ProductPage() {
   //저장 클릭시 
   const handleUpdateReview = () => {
     if (!editedReviewText.trim()) return;
-    axios.put(`http://192.168.0.20:8080/item/review/${editingReviewId}`, {
+    axios.put(`http://127.0.0.1:8080/item/review/${editingReviewId}`, {
       review_content: editedReviewText,
       rating: editedRating
     }).then(() => {
@@ -170,7 +170,7 @@ function ProductPage() {
 
   const handleDeleteReview = (reviewId) => {
     if (window.confirm('리뷰를 삭제하시겠습니까?')) {
-      axios.delete(`http://192.168.0.20:8080/item/review/${reviewId}`).then(fetchReviews);
+      axios.delete(`http://127.0.0.1:8080/item/review/${reviewId}`).then(fetchReviews);
     }
   };
 
@@ -227,7 +227,7 @@ const currentReviews = sortedReviews.slice(indexOfFirstReview, indexOfLastReview
       <div className="product_page_card">
         <div className="product_page_image_section">
           <img
-            src={`http://192.168.0.20:8080/${product.item_img}`}
+            src={`http://127.0.0.1:8080/${product.item_img}`}
             alt={product.item_name}
             className="product_page_image"
           />
@@ -360,7 +360,7 @@ const currentReviews = sortedReviews.slice(indexOfFirstReview, indexOfLastReview
         onClick={() => navigate(`/item/${item.item_origin_id}`)}
       >
         <img 
-          src={`http://192.168.0.20:8080/${item.item_img}`} 
+          src={`http://127.0.0.1:8080/${item.item_img}`} 
           alt={item.item_name} 
         />
         <p>{item.item_name}</p>
