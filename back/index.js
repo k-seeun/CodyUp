@@ -27,16 +27,17 @@ app.use(cors());
 app.use(express.json());
 
 
-app.use((req, res, next) => { 
-  const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-  const cleanedIp = ip.replace('::ffff:', ''); // IPv4 변환된 IP 제거
+// app.use((req, res, next) => { 
+//   const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+//   const cleanedIp = ip.replace('::ffff:', ''); // IPv4 변환된 IP 제거
 
-  if (cleanedIp.startsWith('192.168.0.' || cleanedIp === '127.0.0.1')) { // 
-    next(); // 통과
-  } else {
-    res.status(403).json({ error: '접근이 제한된 IP입니다.' });
-  }
-});
+//   if (cleanedIp === '127.0.0.1' || 
+// cleanedIp.startsWith('192.168.0.')) { // 
+//     next(); // 통과
+//   } else {
+//     res.status(403).json({ error: '접근이 제한된 IP입니다.' });
+//   }
+// });
 
 // 라우터 등록 (중복 제거)
 app.use('/join', joinRouter);
